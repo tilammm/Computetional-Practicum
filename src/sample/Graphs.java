@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.chart.XYChart;
+
 import static java.lang.Math.*;
 
 public class Graphs {
@@ -19,6 +21,11 @@ public class Graphs {
         for (int i = 1; i < N; i++) {
             X[i] = X[i - 1] + h;
         }
+        computeExact(y0, h);
+        computeEuler(h, y0);
+        computeImprovedEuler(h, y0);
+        computeRungeKutta(h, y0);
+
     }
 
 
@@ -26,11 +33,18 @@ public class Graphs {
         return (y*4*cos(x) - y*tan(x));
     }
 
-    public void computeExact (double y0, double h){
+    public void computeExact (double h, double y0){
         double C = (3*sin(X[0])*pow(cos(X[0]), 2) + 1/pow(y0, 3))/pow(cos(X[0]), 3);
         Y = new double[X.length];
-        for (int i= 0; i < X.length; i++) {
+        // 1 / (y^3) = C * (cos x)^3 - 3 * sin x * (cos x)^2
 
+        for (int i =0; i < X.length; i++) {
+            double buff = C * pow(cos(X[i]), 3) - 3 * sin(X[i]) * cos(X[i]) * cos(X[i]);
+            if (buff != 0){
+                Y[i] =  pow( 1 / buff, 1 / 3);
+            } else {
+                Y[i] =0;
+            }
         }
     }
 
@@ -73,6 +87,32 @@ public class Graphs {
         }
     }
 
+    public double[] getApproxErrorEuler() {
+        return approxErrorEuler;
+    }
 
+    public double[] getApproxErrorImprovedEuler() {
+        return approxErrorImprovedEuler;
+    }
+
+    public double[] getApproxErrorRungeKutta() {
+        return approxErrorRungeKutta;
+    }
+
+    public double[] getY() {
+        return Y;
+    }
+
+    public double[] getYEuler() {
+        return YEuler;
+    }
+
+    public double[] getYImprovedEuler() {
+        return YImprovedEuler;
+    }
+
+    public double[] getYRungeKutta() {
+        return YRungeKutta;
+    }
 
 }
