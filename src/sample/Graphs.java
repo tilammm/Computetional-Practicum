@@ -25,7 +25,6 @@ public class Graphs {
         computeEuler(h, y0);
         computeImprovedEuler(h, y0);
         computeRungeKutta(h, y0);
-
     }
 
 
@@ -74,17 +73,18 @@ public class Graphs {
 
     public void computeRungeKutta(double h, double y){
         YRungeKutta = new double[X.length];
-        approxErrorImprovedEuler = new double[X.length];
+        approxErrorRungeKutta = new double[X.length];
         YRungeKutta[0] = y;
         approxErrorRungeKutta[0] = 0;
         for (int i = 1; i < X.length; i++){
             double koef1 = function( X[i-1], YRungeKutta[i-1]);
-            double koef2 = function( X[i-1] + h/2, Y[i-1] + h/2*koef1);
-            double koef3 = function(X[i-1]+h/2, Y[i-1]+h/2*koef2);
-            double koef4 = function( X[i-1] + h, Y[i-1]+ h*koef3);
+            double koef2 = function( X[i-1] + h/2, YRungeKutta[i-1] + h/2*koef1);
+            double koef3 = function(X[i-1]+h/2, YRungeKutta[i-1]+h/2*koef2);
+            double koef4 = function( X[i-1] + h, YRungeKutta[i-1]+ h*koef3);
             YRungeKutta[i] = YRungeKutta[i-1] + h/6*(koef1 + 2 * koef2 + 2*koef3 + koef4);
             approxErrorRungeKutta[i] = abs(YRungeKutta[i] - Y[i]);
         }
+
     }
 
     public double[] getApproxErrorEuler() {
@@ -115,4 +115,7 @@ public class Graphs {
         return YRungeKutta;
     }
 
+    public double[] getX() {
+        return X;
+    }
 }

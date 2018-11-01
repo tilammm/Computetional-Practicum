@@ -9,68 +9,94 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 
-<SplitPane fx:id="mainPane" dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane fx:id="mainPane" dividerPositions="0.22978177150192555" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
   <items>
       <Pane fx:id="initionalValue">
          <children>
-            <Label layoutX="35.0" layoutY="23.0" prefHeight="32.0" prefWidth="155.0" text="Initional values">
+            <Label layoutX="12.0" layoutY="23.0" prefHeight="25.0" prefWidth="149.0" text="Initional values">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label layoutX="55.0" layoutY="99.0" prefHeight="32.0" prefWidth="34.0" text="x0">
+            <Label layoutX="38.0" layoutY="64.0" prefHeight="32.0" prefWidth="34.0" text="x0">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <TextField alignment="CENTER" layoutX="95.0" layoutY="96.0" prefHeight="37.0" prefWidth="34.0" text="0" fx:id="x0Field">
+            <TextField alignment="CENTER" layoutX="79.0" layoutY="62.0" prefHeight="37.0" prefWidth="56.0" text="0" fx:id="x0Field">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="55.0" layoutY="145.0" prefHeight="32.0" prefWidth="34.0" text="y0">
+            <Label layoutX="38.0" layoutY="111.0" prefHeight="32.0" prefWidth="34.0" text="y0">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="y0Field" alignment="CENTER" layoutX="95.0" layoutY="143.0" prefHeight="37.0" prefWidth="34.0" text="1">
+            <TextField fx:id="y0Field" alignment="CENTER" layoutX="78.0" layoutY="109.0" prefHeight="37.0" prefWidth="56.0" text="1">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="55.0" layoutY="190.0" prefHeight="32.0" prefWidth="34.0" text="X">
+            <Label layoutX="38.0" layoutY="158.0" prefHeight="32.0" prefWidth="34.0" text="X">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="XMaxField" alignment="CENTER" layoutX="95.0" layoutY="188.0" prefHeight="37.0" prefWidth="34.0" text="8">
+            <TextField fx:id="XMaxField" alignment="CENTER" layoutX="78.0" layoutY="155.0" prefHeight="37.0" prefWidth="56.0" text="8">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Button fx:id="OkButton" layoutX="79.0" layoutY="288.0" mnemonicParsing="false" text="Ok" />
-            <TextField fx:id="NField" alignment="CENTER" layoutX="96.0" layoutY="234.0" prefHeight="37.0" prefWidth="34.0" text="8">
+            <Button fx:id="OkButton" layoutX="62.0" layoutY="257.0" mnemonicParsing="false" onAction="#drawPlot" text="Ok" />
+            <TextField fx:id="NField" alignment="CENTER" layoutX="78.0" layoutY="200.0" prefHeight="17.0" prefWidth="56.0" text="8">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <Label layoutX="55.0" layoutY="237.0" prefHeight="32.0" prefWidth="34.0" text="N">
+            <Label layoutX="38.0" layoutY="203.0" prefHeight="32.0" prefWidth="34.0" text="N">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
+            <Label layoutX="40.0" layoutY="317.0" prefHeight="32.0" prefWidth="107.0" text="Line charts">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="exactLine" layoutX="16.0" layoutY="361.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="124.0" selected="true" text="Exact line">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="eulerLine" layoutX="16.0" layoutY="393.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="124.0" selected="true" text="Euler line">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="improvedEulerLine" layoutX="17.0" layoutY="425.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="143.0" selected="true" text="Improved Euler ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="rungeKuttaLine" layoutX="17.0" layoutY="457.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="124.0" selected="true" text="Runge-Kutta">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </RadioButton>
          </children>
       </Pane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
-            <TabPane layoutY="-1.0" prefHeight="524.0" prefWidth="533.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutY="-1.0" prefHeight="524.0" prefWidth="597.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Plots">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="504.0" prefWidth="603.0">
                            <children>
-                              <LineChart fx:id="GraphPlot" prefHeight="419.0" prefWidth="533.0">
+                              <LineChart fx:id="GraphPlot" prefHeight="495.0" prefWidth="597.0">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" />
                                 </xAxis>
@@ -85,7 +111,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <LineChart fx:id="TrunctionPlot" prefHeight="417.0" prefWidth="533.0">
+                              <LineChart fx:id="TrunctionPlot" prefHeight="495.0" prefWidth="597.0">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" />
                                 </xAxis>
@@ -100,7 +126,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <LineChart fx:id="ApproximationPlot" prefHeight="417.0" prefWidth="533.0">
+                              <LineChart fx:id="ApproximationPlot" prefHeight="498.0" prefWidth="597.0">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" />
                                 </xAxis>
