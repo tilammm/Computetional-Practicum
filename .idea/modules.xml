@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DEassignment.iml" filepath="$PROJECT_DIR$/DEassignment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DifferentialEqutions.iml" filepath="$PROJECT_DIR$/DifferentialEqutions.iml" />
     </modules>
   </component>
 </project>
